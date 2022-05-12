@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import { ListOfFoodProvider } from './context/UserContext';
+import { FoodProvider } from './context/UserContext';
 export default function App() {
-  return (
+return (
     <>
-      <ListOfFoodProvider>
+      <FoodProvider>
         <Header />
-      </ListOfFoodProvider>
+      </FoodProvider>
     
     </>
   );

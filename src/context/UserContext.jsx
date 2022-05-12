@@ -37,9 +37,9 @@ function foodReducer(food, action) {
   }
 }
 
-export const UserContext = createContext();
+export const UserContext = createContext()
 
-export default function ListOfFoodProvider({ children }) {
+export function FoodProvider({ children }) {
   const [food, dispatch] = useReducer(foodReducer, initialItems);
 
   function handleAddItem(text) {
