@@ -39,7 +39,7 @@ function foodReducer(food, action) {
 
 export const UserContext = createContext();
 
-export default function ListOfFood({ children }) {
+export default function ListOfFoodProvider({ children }) {
   const [food, dispatch] = useReducer(foodReducer, initialItems);
 
   function handleAddItem(text) {
@@ -75,3 +75,11 @@ export default function ListOfFood({ children }) {
     </UserContext.Provider>
   )
 }
+
+export function useList() {
+  const context = useContext(UserContext)
+  if (!context)
+    throw new Error('The component needs to wrapped in a provider')
+  
+  return context
+};
