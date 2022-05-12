@@ -24,7 +24,16 @@ function foodReducer(food, action) {
         }
         return foods;
       });
-      } 
+    } 
+    case 'delete': {
+      return food.filter((foods) => foods.id !== action.id)
+    }
+    case 'clear': {
+      return []
+    }
+    default: {
+      throw Error(`Unknown action: ${action.type}`);
+      }
   }
 }
 
@@ -47,4 +56,17 @@ export default function ListOfFood({ children }) {
       task
     });
   };
+
+  function handleDeleteItem(taskId) {
+    dispatch({
+      type: 'delete',
+      taskId
+    });
+  };
+
+  function handleClearItem() {
+    dispatch({
+      type: 'clear'
+    })
+  }
 }
