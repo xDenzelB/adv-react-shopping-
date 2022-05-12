@@ -37,7 +37,7 @@ function foodReducer(food, action) {
   }
 }
 
-export const useContext = createContext();
+export const UserContext = createContext();
 
 export default function ListOfFood({ children }) {
   const [food, dispatch] = useReducer(foodReducer, initialItems);
@@ -67,6 +67,11 @@ export default function ListOfFood({ children }) {
   function handleClearItem() {
     dispatch({
       type: 'clear'
-    })
-  }
+    });
+  };
+  return (
+    <UserContext.Provider value={{ food, handleAddItem, handleEditItem, handleDeleteItem, handleClearItem }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
