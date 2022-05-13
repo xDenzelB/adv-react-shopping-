@@ -9,6 +9,13 @@ export default function AddFood({ newFood }) {
   }
 
   return (
-  
+    <form onSubmit={handleSubmit}>
+      <input placeholder='Add More Food!'
+        value={text}
+        onChange={(e) => setText(e.target.value)} />
+      <button type='submit'>
+        Add Food! 🍥
+      </button>
+  </form>
 )
 }
