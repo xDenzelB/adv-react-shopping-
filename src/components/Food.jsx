@@ -8,7 +8,7 @@ export default function Food({ food, handleEditItem, handleDeleteItem }) {
     foodDetail = (
       <>
         <input type='text' value={food.text} onChange={(e) => { handleEditItem({ ...food, text: e.target.value }) }} />
-        <button type='button' onClick={() => setEditItem(false)}>
+        <button type='button' aria-label={`${food.text}-save`} onClick={() => setEditItem(false)}>
           Save
         </button>
       </>
@@ -17,7 +17,7 @@ export default function Food({ food, handleEditItem, handleDeleteItem }) {
     foodDetail = (
       <>
         <p>{food.text}</p>
-        <button name='edit' type='button' onClick={() => setEditItem(true)}>
+        <button name='edit' aria-label={`${food.text}-edit`} type='button' onClick={() => setEditItem(true)}>
           Edit
         </button>
       </>
