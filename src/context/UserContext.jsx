@@ -60,7 +60,7 @@ export function FoodProvider({ children }) {
   function handleDeleteItem(taskId) {
     dispatch({
       type: 'delete',
-      taskId
+      id: taskId
     });
   };
 
