@@ -8,7 +8,7 @@ export default function FoodShopping() {
   return (
     <div>
       <AddFood newFood={handleAddItem} />
-      <FoodList food={food} onDeleteItem={handleDeleteItem} onEditItem={handleEditItem} />
+      <FoodList food={food} onHandleDelete={handleDeleteItem} onHandleEdit={handleEditItem} />
   </div>
 )
 }
