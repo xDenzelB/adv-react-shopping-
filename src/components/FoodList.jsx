@@ -1,6 +1,6 @@
 import Food from "./Food";
 
-export default function FoodList({ food, onHandleEdit, onHandleDelete }) {
+export default function FoodList({ food, handleEditItem, handleDeleteItem }) {
 
   return (
     <div>
@@ -8,7 +8,7 @@ export default function FoodList({ food, onHandleEdit, onHandleDelete }) {
         {
           food.map((foods) => (
             <li key={foods.id}>
-              <Food food={foods} onDeleteFood={onHandleDelete} onEditFood={onHandleEdit} />
+              <Food food={foods} handleDeleteItem={handleDeleteItem} handleEditItem={handleEditItem} />
             </li>
           ))
         }

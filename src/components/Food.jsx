@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-export default function Food({ food, onHandleEdit, onHandleDelete }) {
+export default function Food({ food, handleEditItem, handleDeleteItem }) {
   const [editItem, setEditItem] = useState(false);
 
   let foodDetail 
   if (editItem) {
     foodDetail = (
       <>
-        <input type='text' value={food.text} onChange={(e) => { onHandleEdit({ ...food, text: e.target.value }) }} />
+        <input type='text' value={food.text} onChange={(e) => { handleEditItem({ ...food, text: e.target.value }) }} />
         <button type='button' onClick={() => setEditItem(false)}>
           Save
         </button>
@@ -28,7 +28,7 @@ export default function Food({ food, onHandleEdit, onHandleDelete }) {
   return (
     <div>
       {foodDetail}
-      <button type='text' onClick={() => onHandleDelete(food.id)}>
+      <button type='text' onClick={() => handleDeleteItem(food.id)}>
         Delete
       </button>
     </div>
