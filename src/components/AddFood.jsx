@@ -13,7 +13,7 @@ export default function AddFood({ newFood }) {
       <input placeholder='Add More Food!'
         value={text}
         onChange={(e) => setText(e.target.value)} />
-      <button type='submit'>
+      <button aria-label={`${text}-newFood`} type='submit'>
         Add Food! 🍥
       </button>
   </form>

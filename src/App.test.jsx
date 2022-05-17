@@ -18,10 +18,13 @@ describe('App', () => {
         <App />
       </FoodProvider>  
       )
-    const food = await screen.findAllByRole('textbox');
+    const food = await screen.getAllByPlaceholderText('Add More Food!');
     userEvent.type(food[0], 'Kalbi Ribs');
+    const add = await screen.getByRole('button', { name: 'Kalbi Ribs-newFood' });
+    userEvent.click(add);
+    const newFood = await screen.findAllByText(/kalbi ribs/i)
 
-    expect(food[0]).toBeInTheDocument();
+    expect(newFood[0]).toBeInTheDocument();
   });
 
 
