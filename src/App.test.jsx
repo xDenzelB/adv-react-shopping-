@@ -18,10 +18,13 @@ describe('App', () => {
         <App />
       </FoodProvider>  
       )
-    const food = await screen.findAllByRole('textbox');
+    const food = await screen.getAllByPlaceholderText('Add More Food!');
     userEvent.type(food[0], 'Kalbi Ribs');
+    const add = await screen.getByRole('button', { name: 'Kalbi Ribs-newFood' });
+    userEvent.click(add);
+    const newFood = await screen.findAllByText(/kalbi ribs/i)
 
-    expect(food[0]).toBeInTheDocument();
+    expect(newFood[0]).toBeInTheDocument();
   });
 
 
@@ -38,11 +41,27 @@ describe('App', () => {
     waitFor(async () => {
       userEvent.type(add, 'Ahi tuna poke');
       const newFood = await screen.findByText('Ahi tuna poke');
-      const save = await screen.getByRole('button', { name: /Ahi tuna toke-save/i });
+      const save = await screen.getByRole('button', { name: /Ahi tuna poke-save/i });
       userEvent.click(save);
-      expect(newFood).toBeInTheDocument();
+
+     const updatedFood = screen.getByText(/ahi tuna poke/i);
+      expect(updatedFood).toBeInTheDocument();
 
     });
+  
+  })
+
+  it('Should delete food items', async () => {
+    render(
+      <FoodProvider>
+        <App />
+      </FoodProvider>  
+      )
+    
+    const deleteFood = await screen.getByRole('button', { name: /lomi salmon-delete/i });
+    userEvent.click(deleteFood);
+
+    expect(screen.queryByText(/lomi salmon/i)).not.toBeInTheDocument()
   })
 
 })

@@ -28,7 +28,7 @@ export default function Food({ food, handleEditItem, handleDeleteItem }) {
   return (
     <div>
       {foodDetail}
-      <button type='text' onClick={() => handleDeleteItem(food.id)}>
+      <button type='text' aria-label={`${food.text}-delete`} onClick={() => handleDeleteItem(food.id)}>
         Delete
       </button>
     </div>
